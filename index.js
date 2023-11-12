@@ -1,12 +1,9 @@
-var drumCount = document.querySelectorAll('.drum').length;
-for (var i = 0; i < drumCount; i++) {
-  document.querySelectorAll('.drum')[i].addEventListener('click', function (event) {
-    playSound(this.innerHTML);
-    activeButton(this.innerHTML);
-  });
-}
+$(".drum").on("click", function () {
+  playSound(this.innerHTML);
+  activeButton(this.innerHTML);
+});
 
-document.addEventListener('keydown', function(event){
+$(document).on("keydown", function (event) {
   playSound(event.key);
   activeButton(event.key);
 });
@@ -45,9 +42,10 @@ function playSound(selectButton) {
   }
 }
 
-function activeButton(key){
-  document.querySelector("." + key).classList.add("pressed");
-  setTimeout(function(){
-    document.querySelector("." + key).classList.remove("pressed");
+function activeButton(key) {
+  $("." + key).addClass("pressed");
+
+  setTimeout(function () {
+    $("." + key).removeClass("pressed");
   }, 100);
 }
